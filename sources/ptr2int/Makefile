@@ -1,7 +1,7 @@
 CC ?= gcc
 CXX ?= g++
 CFLAGS ?= -Os
-INSTALLDIR ?= /usr/bin
+INSTALL_DIR ?= /usr/bin
 
 all: ptr2int
 
@@ -15,10 +15,10 @@ strip:
 	strip ptr2int
 
 install:
-	-cp -v ptr2int $(INSTALLDIR)/ptr2int
+	-cp -v ptr2int $(INSTALL_DIR)/ptr2int
 
 uninstall:
-	-rm -vf $(INSTALLDIR)/ptr2int
+	-rm -vf $(INSTALL_DIR)/ptr2int
 
 clean:
 	-rm -fv lzss.o

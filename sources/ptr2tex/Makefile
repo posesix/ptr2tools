@@ -1,5 +1,5 @@
 CXX ?= g++
-INSTALLDIR ?= /usr/bin
+INSTALL_DIR ?= /usr/bin
 IMPORT_PNG = -lpng
 
 ptr2tex: *.*
@@ -12,8 +12,8 @@ strip:
 	strip ptr2tex
 
 install:
-	-cp -v ptr2tex $(INSTALLDIR)/ptr2tex
+	-cp -v ptr2tex $(INSTALL_DIR)/ptr2tex
 
 uninstall:
-	-rm -fv $(INSTALLDIR)/ptr2tex
+	-rm -fv $(INSTALL_DIR)/ptr2tex
 
