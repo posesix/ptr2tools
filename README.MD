@@ -12,7 +12,7 @@ At the time of writing, the following functionality is available:
 ## Dependencies
 
 The following libraries allow for a complete build of ptr2tools, whose usage may restrict licensing.
-- libpng (PTR2TEX, [http://www.libpng.org/pub/png/libpng.html])
+- libpng (PTR2TEX, [ http://www.libpng.org/pub/png/libpng.html ])
 
 ## Compiling
 
