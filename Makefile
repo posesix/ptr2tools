@@ -1,11 +1,13 @@
+CC ?= gcc
 CXX ?= g++
 CFLAGS ?= -Os
 PROGS ?= ptr2tex ptr2spm ptr2int
 SOURCES ?= sources
-GENERIC = $(MAKE) -C sources/$@
 INSTALL_DIR ?= /usr/bin
-MAKEC = $(MAKE) -C sources/$$PROG
 IMPORT_PNG?=-lpng
+
+GENERIC = $(MAKE) -C $(SOURCES)/$@
+MAKEC = $(MAKE) -C $(SOURCES)/$$PROG
 
 export
 
@@ -21,7 +23,7 @@ ptr2int:
 
 clean:
 	for PROG in $(PROGS) ; do \
-		$(MAKE) -C sources/$$PROG clean ; \
+		$(MAKEC) clean ; \
 	done
 
 strip:
@@ -31,7 +33,7 @@ strip:
 
 install: 
 	for PROG in $(PROGS) ; do \
-		$(MAKEC) install INSTALLDIR=$(INSTALLDIR) ; \
+		$(MAKEC) install ; \
 	done
 
 uninstall:
