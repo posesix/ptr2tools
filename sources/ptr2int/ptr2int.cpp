@@ -17,6 +17,7 @@ extern "C" {
 }
 
 #ifdef _WIN32
+  #include <direct.h>
   #define mkdir(x,y) _mkdir(x)
 #endif
 
