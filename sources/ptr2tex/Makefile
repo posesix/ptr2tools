@@ -1,9 +1,9 @@
 CXX ?= g++
 INSTALL_DIR ?= /usr/bin
-IMPORT_PNG = -lpng
+IMPORT_PNG ?= -lpng
 
 ptr2tex: *.*
-	$(CXX) $(CFLAGS) $(IMPORT_PNG) *.cpp -o ptr2tex
+	$(CXX) $(CFLAGS) *.cpp -o ptr2tex $(IMPORT_PNG)
 
 clean:
 	-rm -fv ptr2tex
