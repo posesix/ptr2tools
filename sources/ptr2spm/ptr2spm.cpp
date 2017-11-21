@@ -7,7 +7,7 @@
 #include "spm.h"
 
 #ifdef _WIN32
-  #define PRIx64 "%llx"
+  #define PRIx64 "llx"
 #endif
 
 #define ERROR(s,...) fprintf(stderr, s, __VA_ARGS__)
