@@ -261,15 +261,16 @@ int main(int argc, char *args[]) {
 	int tw,th; wh_from_tex0(tex0, tw, th);
 	int npixels = tw * th;
 	u32 *outpixels = (u32*)(malloc(npixels * sizeof(*outpixels)));
-  
-	printf("\nEXTRACT: %016" PRIx64 "%s\n", tex0.value, lbuf);
-	extract_from_tex0(tex0, outpixels);
-  
+
 	if(pngfolder != NULL) {
 	  snprintf(lbuf, sizeof(lbuf), "%s/%d.png", pngfolder, ntex);
 	} else {
 	  snprintf(lbuf, sizeof(lbuf), "%d.png", ntex);
 	}
+
+	printf("EXTRACT: %016" PRIx64 " -> %s\n", tex0.value, lbuf);
+	extract_from_tex0(tex0, outpixels);
+	
 	ntex += 1;
 	FILE *outfile = fopen(lbuf, "wb");
 	if(outfile == NULL) {
