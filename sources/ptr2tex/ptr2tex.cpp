@@ -303,7 +303,7 @@ int main(int argc, char *args[]) {
 
       FILE *infile = fopen(args[4], "rb");
       if(NULL == infile) {
-	ERROR("Could not open input list file %s\n", args[4]);
+	ERROR("Could not open PNG file %s\n", args[4]);
 	return 1;
       }
       pngread(infile, inpixels);
