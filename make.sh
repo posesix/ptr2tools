@@ -11,7 +11,7 @@
 # Compiler options
   export CC="gcc"
   export CXX="g++"
-  export INCLUDE_DIRS=""
+  export INCLUDE_DIRS="-I\"$(pwd)/$SOURCES/include\""
   export LIB_DIRS=""
   export MAKE="make"
 
