@@ -15,6 +15,7 @@
 extern "C" {
 #include "lzss.h"
 }
+#include <ptr2common.h>
 
 #ifdef _WIN32
   #include <direct.h>
@@ -33,23 +34,10 @@ void printhelp() {
   printf("ptr2int create <intfile> <folder>\n");
 }
 
-int getfilesize(FILE *f) {
-  long spos = ftell(f);
-  fseek(f, 0, SEEK_END);
-  long filesize = ftell(f);
-  fseek(f, spos, SEEK_SET);
-  return int(filesize);
-}
-
 #define assertheader(i, s, ...) if(false == ptr2int::checkheader((const void*)(i))) { \
   fprintf(stderr, s, __VA_ARGS__); \
   return 1; \
 }
-
-bool streq(const char *s1, const char *s2) {
-  return (0 == strcasecmp(s1,s2)) ? true : false;
-}
-
 
 bool makedir(const char *newdir) {
   struct stat st;
