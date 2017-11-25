@@ -36,7 +36,7 @@ void pngread(FILE *f, u32 *colors) {
   case PNG_COLOR_TYPE_RGB:
   case PNG_COLOR_TYPE_GRAY:
   case PNG_COLOR_TYPE_PALETTE:
-    png_set_filter(png, 0xFF, PNG_FILLER_AFTER);
+    png_set_filler(png, 0xFF, PNG_FILLER_AFTER);
     break;
   default:
     break;
