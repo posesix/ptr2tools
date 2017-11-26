@@ -20,6 +20,7 @@
   #define PRIx64 "llx"
 #endif
 
+#define INFO(s,...) printf(s, __VA_ARGS__);
 #define ERROR(s,...) fprintf(stderr, s, __VA_ARGS__);
 #define MAX_PATH 256
 
@@ -220,13 +221,16 @@ static int cmd_extract(int argc, char *args[]) {
     return 1;
   }
   sscanf(tex0s, "%016" PRIx64, &tex0.value);
-  printf("Tex0=(%d,%d,%d)\n", tex0.psm, tex0.clut_pixmode, tex0.tex_width);
 
   int tw,th; wh_from_tex0(tex0, tw, th);
   int npixels = tw * th;
   u32 *outpixels = (u32*)(malloc(npixels * sizeof(*outpixels)));
 
+  INFO("EXTRACT: %016" PRIx64 "\n", tex0.value);
+
   extract_from_tex0(tex0, outpixels);
+
+  INFO("WRITE: %s\n", pngfilename);
 
   FILE *outfile = fopen(pngfilename, "wb");
   if(NULL == outfile) {
@@ -237,6 +241,7 @@ static int cmd_extract(int argc, char *args[]) {
   fclose(outfile);
       
   free(outpixels);
+  INFO("Done.\n",0);
   return 0; 
 }
 
