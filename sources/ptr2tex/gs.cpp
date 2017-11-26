@@ -2,7 +2,6 @@
 #include "gstable.inc"
 
 #include <stdio.h>
-#include <wchar.h>
 
 #define gsargs int tbp, int tbw, int tx, int ty, int tw, int th, void *data
 
@@ -82,7 +81,7 @@ int CalcGSIndex4(int tbp, int tbw, int x, int y, int *cb) {
 
 #define t(p, f) case p: f(tbp, tbw, tx, ty, tw, th, data); break;
 
-#define psmerror(name, psm) wprintf(L"%s: Unknown PSM Format: 0x%x\n", L ## #name, psm);
+#define psmerror(name, psm) fprintf(stderr, "%s: Unknown PSM Format: 0x%x\n", #name, psm);
 
 bool WriteTexture(int psm, gsargs) {
     switch(psm) {
