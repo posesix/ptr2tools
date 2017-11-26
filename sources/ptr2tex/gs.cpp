@@ -121,6 +121,8 @@ bool ReadCLUT(int psm, int cpsm, gsargs) {
             psmerror(ReadCLUT_cpsm, cpsm);
             return false;
         }
+	break;
+
     case GS_TEX_8:
 	switch(cpsm) {
 	t(GS_CLUT_32, ReadCLUT32_I8);
@@ -130,6 +132,8 @@ bool ReadCLUT(int psm, int cpsm, gsargs) {
 	  psmerror(ReadCLUT_cpsm, cpsm);
 	  return false;
 	}
+	break;
+
     default:
         psmerror(ReadCLUT_psm, psm);
         return false;
@@ -148,6 +152,8 @@ bool WriteCLUT(int psm, int cpsm, gsargs) {
       psmerror(WriteCLUT_cpsm, cpsm);
       return false;
     }
+    break;
+
   case GS_TEX_8:
     switch(cpsm) {
     t(GS_CLUT_32, WriteCLUT32_I8);
@@ -157,6 +163,8 @@ bool WriteCLUT(int psm, int cpsm, gsargs) {
       psmerror(WriteCLUT_cpsm, cpsm);
       return false;
     }
+    break;
+
   default:
     psmerror(WriteCLUT_psm, psm);
     return false;
