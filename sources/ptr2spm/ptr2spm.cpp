@@ -30,7 +30,7 @@ void loadfile(FILE *f, void *out) {
 void printhelp() {
   printf("ptr2spm [cmd] [args...]\n");
   printf("---Commands---\n");
-  printf("get-tex0-list <spmfile> <outfile>\n");
+  printf("gtx0 <spmfile> <outfile>\n");
 }
 
 bool streq(const char *s1, const char *s2) {
@@ -82,9 +82,9 @@ int main(int argc, char *args[]) {
   if(argc <= 1) {
     printhelp();
   } else {
-    CMD(get-tex0-list) {
+    CMD(gtex0) {
       if(argc <= 3) {
-	printf("get-tex0-list <spmfile> <outfile>\n");
+	printf("gtex0 <spmfile> <outfile>\n");
 	return 1;
       } else {
 	FILE *spmfile = fopen(args[2], "rb");
