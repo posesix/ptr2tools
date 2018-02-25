@@ -12,7 +12,7 @@
   export CC="gcc"
   export CXX="g++"
   export INCLUDE_DIRS="-I\"$(pwd)/$SOURCES/include\""
-  export LIB_DIRS=""
+  export LIB_DIRS="-L\"$(pwd)/$SOURCES/lib\""
   export MAKE="make"
 
   # You will need a compatible library for ptr2tex
