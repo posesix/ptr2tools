@@ -98,7 +98,7 @@ int main(int argc, char *args[]) {
 	  return 1;
 	}
 	printf("spmfile = %s\n", args[2]);
-	get_tex0_list(spmfile, outfile);
+	gtx0(spmfile, outfile);
 	fclose(spmfile);
 	fclose(outfile);
       }
