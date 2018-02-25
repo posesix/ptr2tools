@@ -30,7 +30,7 @@ void loadfile(FILE *f, void *out) {
 void printhelp() {
   printf("ptr2spm [cmd] [args...]\n");
   printf("---Commands---\n");
-  printf("gtx0 <spmfile> <outfile>\n");
+  printf("gtex0 <spmfile> <outfile>\n");
 }
 
 bool streq(const char *s1, const char *s2) {
@@ -60,7 +60,7 @@ std::vector<u64> tex0listfromspm(const void *spm, int spmlen) {
   return tex0list;
 }
 
-void gtx0(FILE *spmfile, FILE *outfile) {
+void gtex0(FILE *spmfile, FILE *outfile) {
   int spmlen = getfilesize(spmfile);
   void *spm = malloc(spmlen);
   fread(spm, 1, spmlen, spmfile);
@@ -98,7 +98,7 @@ int main(int argc, char *args[]) {
 	  return 1;
 	}
 	printf("spmfile = %s\n", args[2]);
-	gtx0(spmfile, outfile);
+	gtex0(spmfile, outfile);
 	fclose(spmfile);
 	fclose(outfile);
       }
