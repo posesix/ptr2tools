@@ -60,7 +60,7 @@ std::vector<u64> tex0listfromspm(const void *spm, int spmlen) {
   return tex0list;
 }
 
-void get_tex0_list(FILE *spmfile, FILE *outfile) {
+void gtx0(FILE *spmfile, FILE *outfile) {
   int spmlen = getfilesize(spmfile);
   void *spm = malloc(spmlen);
   fread(spm, 1, spmlen, spmfile);
