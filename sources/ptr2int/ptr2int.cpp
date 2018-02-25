@@ -46,7 +46,8 @@ cmd_t commands[] = {
     {"c", "make", "pack"}, 3, cmd_create
   },
   { "optimize", "[folder] [out-neworderfile]",
-    "Attempts to optimize the _order.txt file of a folder to achieve lzss compression.",
+    "Attempts to optimize the _order.txt file of a folder to achieve lzss compression.
+	Rich's note: I RECOMMEND NOT USING THIS.",
     {"optimise"}, 1, cmd_optimize
   }
 };
