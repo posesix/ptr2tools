@@ -6,7 +6,7 @@
   export SOURCES="sources"
 
 # Install options
-  export INSTALL_DIR="/usr/bin"
+  export INSTALL_DIR="/mingw64/bin"
 
 # Compiler options
   export CC="gcc"

@@ -3,7 +3,7 @@ CXX ?= g++
 CFLAGS ?= -Os
 PROGS ?= ptr2tex ptr2spm ptr2int
 SOURCES ?= sources
-INSTALL_DIR ?= /usr/bin
+INSTALL_DIR ?= /mingw64/bin
 IMPORT_PNG?=-lpng
 
 GENERIC = $(MAKE) -C $(SOURCES)/$@

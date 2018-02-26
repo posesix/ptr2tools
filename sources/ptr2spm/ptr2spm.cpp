@@ -28,9 +28,8 @@ void loadfile(FILE *f, void *out) {
 }
 
 void printhelp() {
-  printf("ptr2spm [cmd] [args...]\n");
-  printf("---Commands---\n");
-  printf("gtex0 <spmfile> <outfile>\n");
+  printf("gtex0 [spmfile] [outfile]\n");
+  printf("   Extracts tex0 from an SPM model.\n");
 }
 
 bool streq(const char *s1, const char *s2) {
