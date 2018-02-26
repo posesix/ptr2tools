@@ -56,13 +56,13 @@ Note: You'll have to use it every single time you startup.
 ### list [intfile]
    Print list of contents of an INT file.
    ALIASES: l ls
-#### extract [intfile] [folder]
+### extract [intfile] [folder]
    Extract contents of an INT file to a folder.
    ALIASES: e ex x
-#### create [intfile] [folder]
+### create [intfile] [folder]
    Create an INT file using the contents of a folder.
    ALIASES: c make pack
-#### optimize [folder] [out-neworderfile]
+### optimize [folder] [out-neworderfile]
    **I do not recommend using this.**
 
    Attempts to optimize the \_order.txt file of a folder to achieve lzss compression.
@@ -77,7 +77,7 @@ folder (optimize): The folder of which an \_order.txt is located.
 Example: ptr2int e TITLE.INT title
 ## PTR2SPM
 ### Commands
-#### gtex0 [spmfile] [outfile]
+### gtex0 [spmfile] [outfile]
    Extracts tex0 from an SPM model.
    **ALIAS: get-tex0-list***
 ### Command arguments:
@@ -88,11 +88,11 @@ outfile: The output file in .txt.
 Example: ptr2spm gtex0 ant_ant.spm meme.txt
 ## PTR2TEX
 ### Commands
-#### extract [tm0-folder] [in-listfile] <png-folder>
+### extract [tm0-folder] [in-listfile] <png-folder>
    Batch extract textures from tm0-folder using listfile and output as RGBA PNG.
      If png-folder is not specified, the current directory is used for output.
    **ALIASES: el xl get-list gl**
-#### inject [tm0-folder] [in-listfile] <png-folder>
+### inject [tm0-folder] [in-listfile] <png-folder>
    Batch inject textures into tm0-folder using listfile with 32-bit RGBA PNGs.
      If png-folder is not specified, the current directory is used as input.
    **ALIASES: il put-list pl**
