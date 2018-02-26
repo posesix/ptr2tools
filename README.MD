@@ -35,7 +35,6 @@ Today (2/25/18) is the day where I have fixed PTR2Tools. (Took me about 2 whole 
 Disregard he other tutorial I made before this one, it is very outdated and will provide false information.
 This tutorial will just be an edited version of the tutorial that I had make before, although it is a bit more complex.
 It will also update every now and then, due to me making changes.
-------------------------------------
  
  
 #Compiling and setup
@@ -62,9 +61,12 @@ exit
 TO FREE MINGW64:
 1. Run "cd /".
 2. From here you can CD to the C (or any) drive by doing "cd c"
+
 Note: You'll have to use it every single time you startup.
 ##PTR2INT
+
 ###Commands
+
 list [intfile]
    Print list of contents of an INT file.
    ALIASES: l ls
