@@ -13,7 +13,7 @@ This tutorial will just be an edited version of the tutorial that I had make bef
 It will also update every now and then, due to me making changes.
  
  
-# Compiling and setup
+## Compiling and setup
 1. Install MSYS2 and open the MSYS console.
 2. Use the following commands (paste with shift+insert):
 
@@ -41,6 +41,8 @@ TO FREE MINGW64:
 2. From here you can CD to the C (or any) drive by doing "cd c"
 
 Note: You'll have to use it every single time you startup.
+
+---
 ## PTR2INT
 ### Commands
 ### list [intfile]
