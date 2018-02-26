@@ -17,7 +17,8 @@ It will also update every now and then, due to me making changes.
 1. Install MSYS2 and open the MSYS console.
 2. Use the following commands (paste with shift+insert):
 
-```pacman -S git
+```
+pacman -S git
 pacman -S gcc (RESTART AFTER THIS ONE, STUFF MAY BREAK (also ignore errors))
 pacman -S make
 pacman -S mingw-w64-x86_64-cmake
@@ -26,7 +27,8 @@ pacman -S mingw-w64-x86_64-libpng
 
 Afterwards, use these:
 
-```git clone https://github.com/MGRich/ptr2tools.git
+```
+git clone https://github.com/MGRich/ptr2tools.git
 cd ptr2tools
 sh make.sh
 exit
