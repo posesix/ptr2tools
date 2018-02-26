@@ -64,6 +64,8 @@ folder: The folder the INT contents will be placed in.
 
 folder (optimize): The folder of which an \_order.txt is located.
 
+out-neworderfile: The new order file to be made.
+
 Example: ptr2int e TITLE.INT title
 ## PTR2SPM
 ### Commands
