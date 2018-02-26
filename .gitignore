@@ -1,5 +1,3 @@
 
 *.exe
-.vs/ptr2tools/v15/.suo
-.vs/slnx.sqlite
-.vs/VSWorkspaceState.json
+.vs/
