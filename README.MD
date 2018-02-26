@@ -1,19 +1,7 @@
 # PTR2TOOLS
 NOTE: This is a different version of PTR2Tools which fixes a whole lot of things.
 The old version by posesix is unusable.
-## Introduction
-
-PTR2TOOLS is a collection of open source software for interoperability with PaRappa the Rapper 2. You may freely use, modify, and distribute the source code. Pull requests are welcome.
-
-At the time of writing, the following functionality is available:
-- INT Packer/Unpacker
-- TM0 Encoder/Decoder
-- SPM TEX0 Extraction
-
-## Dependencies
-
-The following libraries allow for a complete build of ptr2tools, whose usage may restrict licensing.
-- libpng (PTR2TEX, [ http://www.libpng.org/pub/png/libpng.html ])
+Old README at the bottom.
 
 # Tutorial and Documentation
 
@@ -109,3 +97,19 @@ in-listfile: The .txt file with the tex0 IDs. See PTR2SPM: outfile.
 png-folder: The folder with the PNGs to be injected in.
 
 Example: ptr2tex extract TEXTURES meme.txt maymay
+
+
+# Old README
+## Introduction
+
+PTR2TOOLS is a collection of open source software for interoperability with PaRappa the Rapper 2. You may freely use, modify, and distribute the source code. Pull requests are welcome.
+
+At the time of writing, the following functionality is available:
+- INT Packer/Unpacker
+- TM0 Encoder/Decoder
+- SPM TEX0 Extraction
+
+## Dependencies
+
+The following libraries allow for a complete build of ptr2tools, whose usage may restrict licensing.
+- libpng (PTR2TEX, [ http://www.libpng.org/pub/png/libpng.html ])
