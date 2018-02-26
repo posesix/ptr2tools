@@ -10,6 +10,7 @@ lzss.o: lzss.c lzss.h
 
 ptr2int: lzss.o *.*
 	$(CXX) $(CFLAGS) *.cpp lzss.o -o ptr2int
+	-cp -v ptr2int $(INSTALL_DIR)/ptr2int
 
 install:
 	-cp -v ptr2int $(INSTALL_DIR)/ptr2int

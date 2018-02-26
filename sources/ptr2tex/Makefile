@@ -4,6 +4,7 @@ IMPORT_PNG ?= -lpng
 
 ptr2tex: *.*
 	$(CXX) $(CFLAGS) *.cpp -o ptr2tex $(IMPORT_PNG)
+	-cp -v ptr2tex $(INSTALL_DIR)/ptr2tex
 
 install:
 	-cp -v ptr2tex $(INSTALL_DIR)/ptr2tex
