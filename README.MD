@@ -52,51 +52,60 @@ TO FREE MINGW64:
 
 Note: You'll have to use it every single time you startup.
 ## PTR2INT
-
 ### Commands
-
-list [intfile]
+### list [intfile]
    Print list of contents of an INT file.
    ALIASES: l ls
-extract [intfile] [folder]
+#### extract [intfile] [folder]
    Extract contents of an INT file to a folder.
    ALIASES: e ex x
-create [intfile] [folder]
+#### create [intfile] [folder]
    Create an INT file using the contents of a folder.
    ALIASES: c make pack
-optimize [folder] [out-neworderfile]
+#### optimize [folder] [out-neworderfile]
+   **I do not recommend using this.**
+
    Attempts to optimize the \_order.txt file of a folder to achieve lzss compression.
    ALIASES: optimise
 ### Command arguments:
 intfile: The INT file. It's best to have this in your cd directory.
+
 folder: The folder the INT contents will be placed in.
-folder (optimize): Th folder of which an \_order.txt is located.
+
+folder (optimize): The folder of which an \_order.txt is located.
+
 Example: ptr2int e TITLE.INT title
 ## PTR2SPM
 ### Commands
-gtex0 [spmfile] [outfile]
+#### gtex0 [spmfile] [outfile]
    Extracts tex0 from an SPM model.
+   **ALIAS: get-tex0-list***
 ### Command arguments:
 spmfile: The spm file.
+
 outfile: The output file in .txt.
+
 Example: ptr2spm gtex0 ant_ant.spm meme.txt
 ## PTR2TEX
 ### Commands
-extract [tm0-folder] [in-listfile] <png-folder>
+#### extract [tm0-folder] [in-listfile] <png-folder>
    Batch extract textures from tm0-folder using listfile and output as RGBA PNG.
      If png-folder is not specified, the current directory is used for output.
-   ALIASES: el xl get-list gl
----
-inject [tm0-folder] [in-listfile] <png-folder>
+   **ALIASES: el xl get-list gl**
+#### inject [tm0-folder] [in-listfile] <png-folder>
    Batch inject textures into tm0-folder using listfile with 32-bit RGBA PNGs.
      If png-folder is not specified, the current directory is used as input.
-   ALIASES: il put-list pl
-**NOTE: This one can be a little confusing, so I'll try to explain it the best I can.**
+   **ALIASES: il put-list pl**
 ### Commands defined:
+
 extract: Extracts a list of TM0 textures.
+
 inject: Puts in a list of TM0 textures.
 ### Command arguments:
 tm0-folder: The folder that all the TM0s are in. It is named "TEXTURES" when the INT is extracted.
+
 in-listfile: The .txt file with the tex0 IDs. See PTR2SPM: outfile.
+
 png-folder: The folder with the PNGs to be injected in.
+
 Example: ptr2tex extract TEXTURES meme.txt maymay
