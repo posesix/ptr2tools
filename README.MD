@@ -8,12 +8,12 @@ Old README at the bottom.
 ## Information
 
 Today (2/25/18) is the day where I have fixed PTR2Tools. (Took me about 2 whole months)
-Disregard he other tutorial I made before this one, it is very outdated and will provide false information.
+Disregard the other tutorial I made before this one, it is very outdated and will provide false information.
 This tutorial will just be an edited version of the tutorial that I had make before, although it is a bit more complex.
 It will also update every now and then, due to me making changes.
  
  
-# Compiling and setup
+## Compiling and setup
 1. Install MSYS2 and open the MSYS console.
 2. Use the following commands (paste with shift+insert):
 
@@ -41,22 +41,24 @@ TO FREE MINGW64:
 2. From here you can CD to the C (or any) drive by doing "cd c"
 
 Note: You'll have to use it every single time you startup.
+
+---
 ## PTR2INT
 ### Commands
 ### list [intfile]
    Print list of contents of an INT file.
-   **ALIASES: l ls**
+   **ALIASES: l, ls**
 ### extract [intfile] [folder]
    Extract contents of an INT file to a folder.
-   **ALIASES: e ex x**
+   **ALIASES: e, ex, x**
 ### create [intfile] [folder]
    Create an INT file using the contents of a folder.
-   **ALIASES: c make pack**
+   **ALIASES: c, make, pack**
 ### optimize [folder] [out-neworderfile]
    **I do not recommend using this.**
 
    Attempts to optimize the \_order.txt file of a folder to achieve lzss compression.
-   **ALIASES: optimise**
+   **ALIAS: optimise**
 ### Command arguments:
 intfile: The INT file. It's best to have this in your cd directory.
 
@@ -64,9 +66,14 @@ folder: The folder the INT contents will be placed in.
 
 folder (optimize): The folder of which an \_order.txt is located.
 
+<<<<<<< HEAD
 out-neworderfile: The new order file to be made.
 
 Example: ptr2int e TITLE.INT title
+=======
+### Example
+ptr2int e TITLE.INT title
+>>>>>>> b063b3ba7964d429fbe65bd95ce405c02c3b36ff
 ## PTR2SPM
 ### Commands
 ### gtex0 [spmfile] [outfile]
@@ -76,17 +83,18 @@ spmfile: The spm file.
 
 outfile: The output file in .txt.
 
-Example: ptr2spm gtex0 ant_ant.spm meme.txt
+### Example
+ptr2spm gtex0 ant_ant.spm meme.txt
 ## PTR2TEX
 ### Commands
 ### extract [tm0-folder] [in-listfile] <png-folder>
    Batch extract textures from tm0-folder using listfile and output as RGBA PNG.
      If png-folder is not specified, the current directory is used for output.
-   **ALIASES: e x get g**
+   **ALIASES: e, x, get, g**
 ### inject [tm0-folder] [in-listfile] <png-folder>
    Batch inject textures into tm0-folder using listfile with 32-bit RGBA PNGs.
      If png-folder is not specified, the current directory is used as input.
-   **ALIASES: i put p**
+   **ALIASES: i, put, p**
 ### Commands defined:
 
 extract: Extracts a list of TM0 textures.
@@ -99,7 +107,8 @@ in-listfile: The .txt file with the tex0 IDs. See PTR2SPM: outfile.
 
 png-folder: The folder with the PNGs to be injected in.
 
-Example: ptr2tex extract TEXTURES meme.txt maymay
+### Example
+ptr2tex extract TEXTURES meme.txt maymay
 
 
 # Old README
