@@ -30,6 +30,7 @@ You can also use `sh make.sh strip` to `strip` the resulting binaries if you wou
 #Tutorial and Documentation
 
 ##Information
+
 Today (2/25/18) is the day where I have fixed PTR2Tools. (Took me about 2 whole months)
 Disregard he other tutorial I made before this one, it is very outdated and will provide false information.
 This tutorial will just be an edited version of the tutorial that I had make before, although it is a bit more complex.
@@ -45,14 +46,16 @@ It will also update every now and then, due to me making changes.
 pacman -S gcc (RESTART AFTER THIS ONE, STUFF MAY BREAK (also ignore errors))
 pacman -S make
 pacman -S mingw-w64-x86_64-cmake
-pacman -S mingw-w64-x86_64-libpng```
+pacman -S mingw-w64-x86_64-libpng
+```
 
 Afterwards, use these:
 
 ```git clone https://github.com/MGRich/ptr2tools.git
 cd ptr2tools
 sh make.sh
-exit```
+exit
+```
 
 3. OPEN MINGW64. DO NOT OPEN MSYS.
 
