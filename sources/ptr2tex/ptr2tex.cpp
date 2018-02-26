@@ -33,13 +33,13 @@ static cmd_t commands[2] = {
   { "extract", "[tm0-folder] [in-listfile] <png-folder>",
     "Batch extract textures from tm0-folder using listfile and output as RGBA PNG.\n\
      If png-folder is not specified, the current directory is used for output.",
-    {"el", "xl", "get-list", "gl"}, 4, cmd_extract_list
+    {"e", "x", "get", "g"}, 4, cmd_extract_list
   },
 
   { "inject", "[tm0-folder] [in-listfile] <png-folder>",
     "Batch inject textures into tm0-folder using listfile with 32-bit RGBA PNGs.\n\
      If png-folder is not specified, the current directory is used as input.",
-    {"il", "put-list", "pl"}, 3, cmd_inject_list
+    {"i", "put", "p"}, 3, cmd_inject_list
   }
 };
 

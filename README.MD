@@ -80,11 +80,11 @@ Example: ptr2spm gtex0 ant_ant.spm meme.txt
 ### extract [tm0-folder] [in-listfile] <png-folder>
    Batch extract textures from tm0-folder using listfile and output as RGBA PNG.
      If png-folder is not specified, the current directory is used for output.
-   **ALIASES: el xl get-list gl**
+   **ALIASES: e x get g**
 ### inject [tm0-folder] [in-listfile] <png-folder>
    Batch inject textures into tm0-folder using listfile with 32-bit RGBA PNGs.
      If png-folder is not specified, the current directory is used as input.
-   **ALIASES: il put-list pl**
+   **ALIASES: i put p**
 ### Commands defined:
 
 extract: Extracts a list of TM0 textures.
