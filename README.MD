@@ -1,5 +1,6 @@
 # PTR2TOOLS
-
+NOTE: This is a different version of PTR2Tools which fixes a whole lot of things.
+The old version by posesix is unusable.
 ## Introduction
 
 PTR2TOOLS is a collection of open source software for interoperability with PaRappa the Rapper 2. You may freely use, modify, and distribute the source code. Pull requests are welcome.
