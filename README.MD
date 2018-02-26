@@ -8,7 +8,7 @@ Old README at the bottom.
 ## Information
 
 Today (2/25/18) is the day where I have fixed PTR2Tools. (Took me about 2 whole months)
-Disregard he other tutorial I made before this one, it is very outdated and will provide false information.
+Disregard the other tutorial I made before this one, it is very outdated and will provide false information.
 This tutorial will just be an edited version of the tutorial that I had make before, although it is a bit more complex.
 It will also update every now and then, due to me making changes.
  
@@ -64,7 +64,8 @@ folder: The folder the INT contents will be placed in.
 
 folder (optimize): The folder of which an \_order.txt is located.
 
-Example: ptr2int e TITLE.INT title
+### Example
+ptr2int e TITLE.INT title
 ## PTR2SPM
 ### Commands
 ### gtex0 [spmfile] [outfile]
@@ -74,7 +75,8 @@ spmfile: The spm file.
 
 outfile: The output file in .txt.
 
-Example: ptr2spm gtex0 ant_ant.spm meme.txt
+### Example
+ptr2spm gtex0 ant_ant.spm meme.txt
 ## PTR2TEX
 ### Commands
 ### extract [tm0-folder] [in-listfile] <png-folder>
@@ -97,7 +99,8 @@ in-listfile: The .txt file with the tex0 IDs. See PTR2SPM: outfile.
 
 png-folder: The folder with the PNGs to be injected in.
 
-Example: ptr2tex extract TEXTURES meme.txt maymay
+### Example
+ptr2tex extract TEXTURES meme.txt maymay
 
 
 # Old README
