@@ -43,6 +43,7 @@ Note: You'll have to use it every single time you startup.
 ### Commands
 ### list [intfile]
    Print list of contents of an INT file.
+<<<<<<< HEAD
    **ALIASES: l ls**
 ### extract [intfile] [folder]
    Extract contents of an INT file to a folder.
@@ -50,11 +51,24 @@ Note: You'll have to use it every single time you startup.
 ### create [intfile] [folder]
    Create an INT file using the contents of a folder.
    **ALIASES: c make pack**
+=======
+   ALIASES: l ls
+### extract [intfile] [folder]
+   Extract contents of an INT file to a folder.
+   ALIASES: e ex x
+### create [intfile] [folder]
+   Create an INT file using the contents of a folder.
+   ALIASES: c make pack
+>>>>>>> 50ea3aaabaf50967f85359aaedaa9d24ffefc87f
 ### optimize [folder] [out-neworderfile]
    **I do not recommend using this.**
 
    Attempts to optimize the \_order.txt file of a folder to achieve lzss compression.
+<<<<<<< HEAD
    **ALIASES: optimise**
+=======
+   ALIASES: optimise
+>>>>>>> 50ea3aaabaf50967f85359aaedaa9d24ffefc87f
 ### Command arguments:
 intfile: The INT file. It's best to have this in your cd directory.
 
@@ -67,6 +81,10 @@ Example: ptr2int e TITLE.INT title
 ### Commands
 ### gtex0 [spmfile] [outfile]
    Extracts tex0 from an SPM model.
+<<<<<<< HEAD
+=======
+   **ALIAS: get-tex0-list***
+>>>>>>> 50ea3aaabaf50967f85359aaedaa9d24ffefc87f
 ### Command arguments:
 spmfile: The spm file.
 
