@@ -12,29 +12,20 @@ Disregard he other tutorial I made before this one, it is very outdated and will
 This tutorial will just be an edited version of the tutorial that I had make before, although it is a bit more complex.
 It will also update every now and then, due to me making changes.
  
- 
 # Compiling and setup
-1. Install MSYS2 and open the MSYS console.
-2. Use the following commands (paste with shift+insert):
+TO FREE MINGW64:
+1. Run "cd /".
+2. From here you can CD to the C (or any) drive by doing "cd c"
 
-```
-pacman -S git
-pacman -S gcc (RESTART AFTER THIS ONE, STUFF MAY BREAK (also ignore errors))
-pacman -S make
-pacman -S mingw-w64-x86_64-cmake
-pacman -S mingw-w64-x86_64-libpng
-```
+---
+1. Install MSYS2 and open the MINGW (this tutorial uses 64) console.
+2. Using the "TO FREE MINGW" above, direct to the directory where you want it.
+3. Using normal file explorer now, download the `make.sh` located in this respository and place it into that directory.
+3b. If you put in the file while the directory was open, do `cd .`.
+4. Run it using `sh make.sh`.
+5. Say yes to everything, and once its finally done you should have ability to use PTR2tools (and ISOMod).
 
-Afterwards, use these:
-
-```
-git clone https://github.com/MGRich/ptr2tools.git
-cd ptr2tools
-sh make.sh
-exit
-```
-
-3. OPEN MINGW64. DO NOT OPEN MSYS.
+**You must continue to use MINGW. The commands must be stored there. If they are not, they have the very possibility to break.**
 
 TO FREE MINGW64:
 1. Run "cd /".
@@ -100,7 +91,16 @@ in-listfile: The .txt file with the tex0 IDs. See PTR2SPM: outfile.
 png-folder: The folder with the PNGs to be injected in.
 
 Example: ptr2tex extract TEXTURES meme.txt maymay
+## ISOMOD
+### Command
+### put [isofile] [targetfile] [hostfile]
+   Add/replace an ISO's file. Very useful for installing mods.
+### Command arguents:
+isofile: The ISO file to be modified.
 
+targetfile: The file to be replaced/added *in the ISO.*
+
+hostfile: The file to replace/add ***into*** *the ISO.*
 
 # Old README
 ## Introduction

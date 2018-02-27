@@ -1,7 +1,7 @@
 CC ?= gcc
 CXX ?= g++
 CFLAGS ?= -Os
-PROGS ?= ptr2tex ptr2spm ptr2int
+PROGS ?= ptr2tex ptr2spm ptr2int isomod
 SOURCES ?= sources
 INSTALL_DIR ?= /mingw64/bin
 IMPORT_PNG?=-lpng
@@ -19,24 +19,10 @@ ptr2spm:
 	$(GENERIC)
 ptr2int: 
 	$(GENERIC)
-
-
-clean:
-	for PROG in $(PROGS) ; do \
-		$(MAKEC) clean ; \
-	done
-
-strip:
-	for PROG in $(PROGS) ; do \
-		$(MAKEC) strip ; \
-	done
+isomod: 
+	$(GENERIC)
 
 install: 
 	for PROG in $(PROGS) ; do \
 		$(MAKEC) install ; \
-	done
-
-uninstall:
-	for PROG in $(PROGS) ; do \
-		$(MAKEC) uninstall ; \
 	done
