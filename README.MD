@@ -34,18 +34,18 @@ TO FREE MINGW:
 ### Commands
 ### list [intfile]
    Print list of contents of an INT file.
-   **ALIASES: l ls**
+   **ALIASES: l, ls**
 ### extract [intfile] [folder]
    Extract contents of an INT file to a folder.
-   **ALIASES: e ex x**
+   **ALIASES: e, ex, x**
 ### create [intfile] [folder]
    Create an INT file using the contents of a folder.
-   **ALIASES: c make pack**
+   **ALIASES: c, i, make, pack**
 ### optimize [folder] [out-neworderfile]
    **I do not recommend using this.**
 
    Attempts to optimize the \_order.txt file of a folder to achieve lzss compression.
-   **ALIASES: optimise**
+   **ALIAS: optimise**
 ### Command arguments:
 intfile: The INT file. It's best to have this in your cd directory.
 
@@ -71,11 +71,11 @@ Example: ptr2spm gtex0 ant_ant.spm meme.txt
 ### extract [tm0-folder] [in-listfile] <png-folder>
    Batch extract textures from tm0-folder using listfile and output as RGBA PNG.
      If png-folder is not specified, the current directory is used for output.
-   **ALIASES: e x get g**
+   **ALIASES: e, x, get, g**
 ### inject [tm0-folder] [in-listfile] <png-folder>
    Batch inject textures into tm0-folder using listfile with 32-bit RGBA PNGs.
      If png-folder is not specified, the current directory is used as input.
-   **ALIASES: i put p**
+   **ALIASES: i, put, p**
 ### Commands defined:
 
 extract: Extracts a list of TM0 textures.
