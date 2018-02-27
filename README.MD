@@ -20,7 +20,7 @@ TO FREE MINGW:
 ---
 1. Install MSYS2 and open the MINGW (this tutorial uses 64) console.
 2. Using the "TO FREE MINGW" above, direct to the directory where you want it.
-3. Using normal file explorer now, download the `make.sh` located in this respository and place it into that directory.
+3. Using normal file explorer now, download the `make.sh` located at the releases and place it into that directory.
 
 3b. If you put in the file while the directory was open, do `cd .`.
 
