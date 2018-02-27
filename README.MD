@@ -13,10 +13,10 @@ This tutorial will just be an edited version of the tutorial that I had make bef
 It will also update every now and then, due to me making changes.
  
 # Compiling and setup
-TO FREE MINGW64:
+TO FREE MINGW:
 1. Run "cd /".
 2. From here you can CD to the C (or any) drive by doing "cd c"
-
+3. You have to do this every time you start up MINGW.
 ---
 1. Install MSYS2 and open the MINGW (this tutorial uses 64) console.
 2. Using the "TO FREE MINGW" above, direct to the directory where you want it.
@@ -30,12 +30,6 @@ TO FREE MINGW64:
 5b. **The make acts as an updater. Run it periodically to get th latest updates. Anything other than PTR2Tools will be deleted if it is placed in that folder.**
 
 **You must continue to use MINGW. The commands must be stored there. If they are not, they have the very possibility to break.**
-
-TO FREE MINGW64:
-1. Run "cd /".
-2. From here you can CD to the C (or any) drive by doing "cd c"
-
-Note: You'll have to use it every single time you startup.
 ## PTR2INT
 ### Commands
 ### list [intfile]
