@@ -89,16 +89,7 @@ in-listfile: The .txt file with the tex0 IDs. See PTR2SPM: outfile.
 png-folder: The folder with the PNGs to be injected in.
 
 Example: ptr2tex extract TEXTURES meme.txt maymay
-## ISOMOD
-### Command
-### put [isofile] [targetfile] [hostfile]
-   Add/replace an ISO's file. Very useful for installing mods.
-### Command arguents:
-isofile: The ISO file to be modified.
 
-targetfile: The file to be replaced/added *in the ISO.*
-
-hostfile: The file to replace/add ***into*** *the ISO.*
 
 # Old README
 ## Introduction

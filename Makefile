@@ -1,7 +1,7 @@
 CC ?= gcc
 CXX ?= g++
 CFLAGS ?= -Os
-PROGS ?= ptr2tex ptr2spm ptr2int isomod
+PROGS ?= ptr2tex ptr2spm ptr2int
 SOURCES ?= sources
 INSTALL_DIR ?= /mingw64/bin
 IMPORT_PNG?=-lpng
@@ -18,8 +18,6 @@ ptr2tex:
 ptr2spm:
 	$(GENERIC)
 ptr2int: 
-	$(GENERIC)
-isomod: 
 	$(GENERIC)
 
 install: 

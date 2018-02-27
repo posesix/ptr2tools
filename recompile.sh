@@ -1,6 +1,6 @@
 # General Options
   # Which programs to compile
-  export PROGS="ptr2int ptr2spm ptr2tex isomod"
+  export PROGS="ptr2int ptr2spm ptr2tex"
 
   # Source code directory
   export SOURCES="sources"
