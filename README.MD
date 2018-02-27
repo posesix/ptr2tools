@@ -21,6 +21,7 @@ TO FREE MINGW64:
 1. Install MSYS2 and open the MINGW (this tutorial uses 64) console.
 2. Using the "TO FREE MINGW" above, direct to the directory where you want it.
 3. Using normal file explorer now, download the `make.sh` located in this respository and place it into that directory.
+
 3b. If you put in the file while the directory was open, do `cd .`.
 4. Run it using `sh make.sh`.
 5. Say yes to everything, and once its finally done you should have ability to use PTR2tools (and ISOMod).
