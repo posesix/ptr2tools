@@ -13,6 +13,7 @@ This tutorial will just be an edited version of the tutorial that I had make bef
 It will also update every now and then, due to me making changes.
  
 # Compiling and setup
+<<<<<<< HEAD
 TO FREE MINGW64:
 1. Run "cd /".
 2. From here you can CD to the C (or any) drive by doing "cd c"
@@ -25,6 +26,27 @@ TO FREE MINGW64:
 4. Run it using `sh make.sh`.
 5. Say yes to everything, and once its finally done you should have ability to use PTR2tools (and ISOMod).
 
+=======
+1. Install MSYS2 and open the MINGW64 console.
+2. Use the following commands (paste with shift+insert):
+
+```
+pacman -S git
+pacman -S mingw-w64-x86_64-gcc 
+pacman -S make
+pacman -S mingw-w64-x86_64-cmake
+pacman -S mingw-w64-x86_64-libpng
+```
+
+Afterwards, use these:
+
+```
+git clone https://github.com/MGRich/ptr2tools.git
+cd ptr2tools
+make
+exit
+```
+>>>>>>> 065a23ecdc0d1221077d94d1bfbb943c2cdffba7
 **You must continue to use MINGW. The commands must be stored there. If they are not, they have the very possibility to break.**
 
 TO FREE MINGW64:
