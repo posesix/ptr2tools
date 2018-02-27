@@ -26,6 +26,8 @@ TO FREE MINGW64:
 4. Run it using `sh make.sh`.
 5. Say yes to everything, and once its finally done you should have ability to use PTR2tools (and ISOMod).
 
+5b. **The make acts as an updater. Run it periodically to get th latest updates. Anything other than PTR2Tools will be deleted if it is placed in that folder.**
+
 **You must continue to use MINGW. The commands must be stored there. If they are not, they have the very possibility to break.**
 
 TO FREE MINGW64:

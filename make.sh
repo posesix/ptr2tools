@@ -1,8 +1,9 @@
-pacman -S git
-pacman -S mingw-w64-x86_64-gcc 
-pacman -S make
-pacman -S mingw-w64-x86_64-cmake
-pacman -S mingw-w64-x86_64-libpng
+pacman --needed -S git
+pacman --needed -S mingw-w64-x86_64-gcc 
+pacman --needed -S make
+pacman --needed -S mingw-w64-x86_64-cmake
+pacman --needed -S mingw-w64-x86_64-libpng
+if [ -d ptr2tools ]; then rm -rf ptr2tools; fi
 git clone https://github.com/MGRich/ptr2tools.git
 cd ptr2tools
 # General Options
