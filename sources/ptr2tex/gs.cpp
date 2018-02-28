@@ -87,6 +87,7 @@ bool WriteTexture(int psm, gsargs) {
     switch(psm) {
     t(GS_TEX_32, WriteTexture32);
     t(GS_TEX_16, WriteTexture16);
+    t(GS_TEX_8,  WriteTexture8);
     t(GS_TEX_4,  WriteTexture4);
     default:
         psmerror(WriteTexture, psm);
@@ -170,6 +171,32 @@ bool WriteCLUT(int psm, int cpsm, gsargs) {
   return true;
 }
 
+void ReadCLUT32_I8(gsargs) {
+  int startBlockPos = tbp * 64;
+  u32 *dst = (u32*)(data);
+  u32 *src = (u32*)(gsmem + (startBlockPos * 4));
+  int i;
+
+  for(i = tx; i < (tx+tw); i += 1) {
+    *dst = src[clutTableT32I8[i]];
+    dst++;
+  }
+  return;
+}
+
+void ReadCLUT16_I8(gsargs) {
+  int startBlockPos = tbp * 64;
+  u16 *dst = (u16*)(data);
+  u16 *src = (u16*)(gsmem + (startBlockPos * 4));
+  int i;
+
+  for(i = tx; i < (tx+tw); i += 1) {
+    *dst = src[clutTableT16I8[i]];
+    dst++;
+  }
+  return;
+}
+
 void ReadCLUT32_I4(gsargs) {
 	int startBlockPos = tbp * 64;
 	u32 *dst = (u32*)(data);
@@ -194,6 +221,32 @@ void ReadCLUT16_I4(gsargs) {
 		dst++;
 	}
 	return;
+}
+
+void WriteCLUT32_I8(gsargs) {
+  int startBlockPos = tbp * 64;
+  u32 *dst = (u32*)(data);
+  u32 *src = (u32*)(gsmem + (startBlockPos * 4));
+  int i;
+
+  for(i=tx; i<(tx+tw);i+=1) {
+    src[clutTableT32I8[i]] = *dst;
+    dst++;
+  }
+  return;
+}
+
+void WriteCLUT16_I8(gsargs) {
+  int startBlockPos = tbp * 64;
+  u16 *dst = (u16*)(data);
+  u16 *src = (u16*)(gsmem + (startBlockPos * 4));
+  int i;
+
+  for(i=tx;i<(tx+tw);i+=1) {
+    src[clutTableT16I8[i]] = *dst;
+    dst++;
+  }
+  return;
 }
 
 void WriteCLUT32_I4(gsargs) {
@@ -252,6 +305,14 @@ void ReadTexture16(gsargs) {
         *src = gsread(u16, CalcGSIndex16(tbp, tbw, x, y));
         src++;
     }
+}
+
+void WriteTexture8(gsargs) {
+  gshdr(u8);
+  gsloop {
+    gswrite(u8, CalcGSIndex8(tbp, tbw, x, y), *src);
+    src++;
+  }
 }
 
 void ReadTexture8(gsargs) {
