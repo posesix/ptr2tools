@@ -43,7 +43,7 @@ cmd_t commands[] = {
   },
   { "create", "[intfile] [folder]",
     "Create an INT file using the contents of a folder.",
-    {"c", "i", "make", "pack"}, 3, cmd_create
+    {"c", "make", "pack"}, 3, cmd_create
   },
   { "optimize", "[folder] [out-neworderfile]",
     "Attempts to optimize the _order.txt file of a folder to achieve lzss compression. Rich's note: I DO NOT RECOMMEND USING THIS.",
