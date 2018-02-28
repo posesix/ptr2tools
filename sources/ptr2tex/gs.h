@@ -24,7 +24,6 @@ extern u8 gsmem[1024*1024*4];
 bool WriteTexture(int psm, gsargs);
 void WriteTexture32(gsargs);
 void WriteTexture16(gsargs);
-void WriteTexture8(gsargs);
 void WriteTexture4(gsargs);
 
 bool ReadTexture(int psm, gsargs);
@@ -34,14 +33,10 @@ void ReadTexture8(gsargs);
 void ReadTexture4(gsargs);
 
 bool ReadCLUT(int psm, int cpsm, gsargs);
-void ReadCLUT32_I8(gsargs);
-void ReadCLUT16_I8(gsargs);
 void ReadCLUT32_I4(gsargs);
 void ReadCLUT16_I4(gsargs);
 
 bool WriteCLUT(int psm, int cpsm, gsargs);
-void WriteCLUT32_I8(gsargs);
-void WriteCLUT16_I8(gsargs);
 void WriteCLUT32_I4(gsargs);
 void WriteCLUT16_I4(gsargs);
 
