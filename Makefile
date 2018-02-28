@@ -1,7 +1,7 @@
 CC ?= gcc
 CXX ?= g++
 CFLAGS ?= -Os
-PROGS ?= ptr2tex ptr2spm ptr2int
+PROGS ?= ptr2tex ptr2spm ptr2int ptr2tex2
 SOURCES ?= sources
 INSTALL_DIR ?= /mingw64/bin
 IMPORT_PNG?=-lpng
@@ -14,6 +14,8 @@ export
 all: $(PROGS)
 
 ptr2tex:
+	$(GENERIC)
+ptr2tex2:
 	$(GENERIC)
 ptr2spm:
 	$(GENERIC)

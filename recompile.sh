@@ -1,6 +1,6 @@
 # General Options
   # Which programs to compile
-  export PROGS="ptr2int ptr2spm ptr2tex"
+  export PROGS="ptr2int ptr2spm ptr2tex ptr2tex2"
 
   # Source code directory
   export SOURCES="sources"
