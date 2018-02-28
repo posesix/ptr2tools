@@ -89,7 +89,20 @@ in-listfile: The .txt file with the tex0 IDs. See PTR2SPM: outfile.
 png-folder: The folder with the PNGs to be injected in.
 
 Example: ptr2tex extract TEXTURES meme.txt maymay
+##OLD PTR2TEX (PTR2TEX2)
+##Information
+This was included in here just in case the common "Segmentation fault" error appeared with the fixed PTR2Tex.
 
+If you know which tex0 give that error, you can use the `extract` and `inject` command separately.
+
+Here it is defined by PTR2Tools.
+```
+---Commands---
+extract [tm0-folder] [tex0] [output-filename]
+inject [tm0-folder] [tex0] [input-filename]
+extract-list [tm0-folder] [list-filename] <png-folder>
+inject-list [tm0-folder] [list-filename] <png-folder>
+```
 
 # Old README
 ## Introduction
