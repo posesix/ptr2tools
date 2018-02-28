@@ -120,6 +120,7 @@ bool ReadCLUT(int psm, int cpsm, gsargs) {
             psmerror(ReadCLUT_cpsm, cpsm);
             return false;
         }
+<<<<<<< HEAD
 	break;
 
     case GS_TEX_8:
@@ -133,6 +134,8 @@ bool ReadCLUT(int psm, int cpsm, gsargs) {
 	}
 	break;
 
+=======
+>>>>>>> parent of 24807ef... GS: Add support for 8-bit paletted textures.
     default:
         psmerror(ReadCLUT_psm, psm);
         return false;
@@ -151,6 +154,7 @@ bool WriteCLUT(int psm, int cpsm, gsargs) {
       psmerror(WriteCLUT_cpsm, cpsm);
       return false;
     }
+<<<<<<< HEAD
     break;
 
   case GS_TEX_8:
@@ -164,6 +168,8 @@ bool WriteCLUT(int psm, int cpsm, gsargs) {
     }
     break;
 
+=======
+>>>>>>> parent of 24807ef... GS: Add support for 8-bit paletted textures.
   default:
     psmerror(WriteCLUT_psm, psm);
     return false;
