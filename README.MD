@@ -18,7 +18,7 @@ TO FREE MINGW:
 2. From here you can CD to the C (or any) drive by doing "cd c"
 3. You have to do this every time you start up MINGW.
 ---
-1. [Install MSYS2](https://mysys2.org/) and open the MINGW (this tutorial uses 64) console.
+1. Install MSYS2 and open the MINGW (this tutorial uses 64) console.
 2. Using the "TO FREE MINGW" above, direct to the directory where you want it.
 3. Using normal file explorer now, download the `make.sh` located at the releases and place it into that directory.
 
@@ -27,7 +27,7 @@ TO FREE MINGW:
 4. Run it using `sh make.sh`.
 5. Say yes to everything, and once its finally done you should have ability to use PTR2tools (and ISOMod).
 
-5b. **The make acts as an updater. Run it periodically to get the latest updates. Anything other than PTR2Tools will be deleted if it is placed in that folder.**
+5b. **The make acts as an updater. Run it periodically to get th latest updates. Anything other than PTR2Tools will be deleted if it is placed in that folder.**
 
 **You must continue to use MINGW. The commands must be stored there. If they are not, they have the very possibility to break.**
 ## PTR2INT
