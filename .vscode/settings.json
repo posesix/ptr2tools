@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.hta": "html",
+        "*.inc": "cpp"
+    }
+}

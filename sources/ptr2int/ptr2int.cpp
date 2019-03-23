@@ -441,16 +441,17 @@ static int cmd_optimize(int argc, char *args[]) {
   const char *foldername = args[0];
   const char *outfilename = args[1];
   char lbuf[256];
-  byte *history = (byte*)(malloc(4096*2));
-  std::vector<intfile_t> intfiles;
-  std::vector<int> indices;
+  byte *history = (byte*)(malloc(4096*2)); //allocate 4096*2 for keeping history
+  std::vector<intfile_t> intfiles; //vector of int files
+  std::vector<int> indices; //vector of ?????
 
   FILE *outfile = fopen(outfilename, "a");
-  if(outfile == NULL) {
+  if(outfile == NULL) { //if the out file couldnt be opened (already there and access denied)
     ERROR("Couldn't open target file %s\n", outfilename);
     return 1;
   }
   fclose(outfile);
+  //seemingly does a quick check to see if it can open it and then just closes it right after??????
 
   snprintf(lbuf, sizeof(lbuf), "%s/_order.txt", foldername);
   FILE *orderfile = fopen(lbuf, "r");
@@ -459,22 +460,27 @@ static int cmd_optimize(int argc, char *args[]) {
     return 1;
   }
   resfile_order_iterator_t iter(orderfile);
+  //iterate over the order file
 
   const char *filename;
   int i = 0;
-  byte *orig_folderdata = (byte*)(malloc(4));
+  byte *orig_folderdata = (byte*)(malloc(4)); //byte pointer for 4 bytes
   int orig_folderlen = 0;
   while((filename = iter.next()) != NULL) {
-    snprintf(lbuf, sizeof(lbuf), "%s/%s", foldername, filename);
+    snprintf(lbuf, sizeof(lbuf), "%s/%s", foldername, filename); //print buffer, byte size of buffer (usually 256 i think),
     FILE *f = fopen(lbuf, "rb");
-    if(NULL == f) {
+    if(NULL == f) { //if file doesnt exist, we're fucked
       fprintf(stderr, "Couldn't find file %s\n", lbuf);
       continue;
     }
     printf("LOAD: %s\n", filename);
-    int len = getfilesize(f);
-    int fdp = orig_folderlen;
-    orig_folderlen += ALIGN(len, 0x10);
+    int len = getfilesize(f); //len is the filesize (quite obviously)
+    int fdp = orig_folderlen; //folder length is whats read i believe, which currently is 0
+    orig_folderlen += ALIGN(len, 0x10); // (len + 0xF) AND (NOT (0xF))
+	/*if len is lets say 3000, 0xBB8, align would result to
+	0xBC7 AND (NOT 0xF)
+	0xBC0
+	*/
     orig_folderdata = (byte*)(realloc(orig_folderdata, orig_folderlen));
     fread(orig_folderdata + fdp, 1, len, f);
     pad_folderdata(orig_folderdata, fdp + len, orig_folderlen);
@@ -494,7 +500,7 @@ static int cmd_optimize(int argc, char *args[]) {
 
   int attempts = 1;
 
-  for(;;) {
+  for(;;) { //inf loop
     byte *folderdata = (byte*)(malloc(4));
     int folderlen = 0;
     int fdp = 0;
@@ -546,19 +552,19 @@ static int cmd_optimize(int argc, char *args[]) {
 }
 
 int main(int argc, char *args[]) {
-  if(ptr2int::checkinstall() == false) {
+  if(ptr2int::checkinstall() == false) { //if it didnt compile well, will barely show
     fprintf(stderr, "Bad compile\n");
     return 2;
   }
   
-  if(argc <= 1) {
+  if(argc <= 1) { //if no arguments
     for(cmd_t &cmd : commands) {
       cmd.printhelp("");
     }
     return 1;
   } else {
-    for(cmd_t &cmd : commands) {
-      if(cmd.matches(args[1])) {
+    for(cmd_t &cmd : commands) { //find matching command
+      if(cmd.matches(args[1])) { //epic GAMER STYLE we found a match
 	return cmd.exec(argc-2, args+2);
       }
     }
