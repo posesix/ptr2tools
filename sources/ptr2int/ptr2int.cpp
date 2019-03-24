@@ -116,43 +116,43 @@ size_t calc_int_section_size(std::vector<intfile_t> &intfiles, int lzss_size) {
 }
 
 void build_int_section(int restype, std::vector<intfile_t> &intfiles, const byte *lzss, int lzss_size, byte *out) {
-  intsection_offset_table_t r = get_int_section_offsets(intfiles, lzss_size);
-  ptr2int::header_t *hdr = (ptr2int::header_t*)(out + r.hdr);
-  u32 *offsets = (u32*)(out + r.offsets);
-  ptr2int::filename_entry_t *fentries = (ptr2int::filename_entry_t*)(out + r.filename_table);
-  char *characters = (char*)(out + r.characters);
-  ptr2int::lzss_header_t *lzss_sec = (ptr2int::lzss_header_t*)(out + r.lzss);
+  intsection_offset_table_t r = get_int_section_offsets(intfiles, lzss_size); //get offsets for the sections
+  ptr2int::header_t *hdr = (ptr2int::header_t*)(out + r.hdr); //establish a header
+  u32 *offsets = (u32*)(out + r.offsets); //pointer of u32s for offsets
+  ptr2int::filename_entry_t *fentries = (ptr2int::filename_entry_t*)(out + r.filename_table); //pointer of filenames entries
+  char *characters = (char*)(out + r.characters); //what
+  ptr2int::lzss_header_t *lzss_sec = (ptr2int::lzss_header_t*)(out + r.lzss); //get the lzss header for the section
 
-  memset(out, 0, r.end);
+  memset(out, 0, r.end); //set out to be all 0s
 
-  hdr->unk[0] = 0;
-  hdr->unk[1] = 0;
-  hdr->lzss_section_size = r.end - r.lzss;
-  hdr->resourcetype = restype;
-  hdr->fntablesizeinbytes = r.lzss - r.filename_table;
-  hdr->magic = INTHDR_MAGIC;
-  hdr->fntableoffset = r.filename_table;
-  hdr->filecount = intfiles.size();
+  hdr->unk[0] = 0; //what
+  hdr->unk[1] = 0; //what
+  hdr->lzss_section_size = r.end - r.lzss; //set the section size
+  hdr->resourcetype = restype; //set resource type
+  hdr->fntablesizeinbytes = r.lzss - r.filename_table; //get the table size
+  hdr->magic = INTHDR_MAGIC; //0x44332211 as usual
+  hdr->fntableoffset = r.filename_table; //get offset from table
+  hdr->filecount = intfiles.size(); //get # of files
 
   u32 offset = 0;
-  u32 fnoffs = 0;
-  for(u32 i = 0; i < intfiles.size(); i += 1) {
-    intfile_t &intfile = intfiles[i];
-    offsets[i] = offset;
-    fentries[i].offset = fnoffs;
-    fentries[i].sizeof_file = intfile.filesize;
-    size_t fnlen = intfile.filename.length() + 1;
-    const char *cstr = intfile.filename.c_str();
-    memcpy(characters+fnoffs, cstr, fnlen);
+  u32 fnoffs = 0; //set offset and fnoffs to 0
+  for(u32 i = 0; i < intfiles.size(); i += 1) { //for each file..
+    intfile_t &intfile = intfiles[i]; //get pointer to intfile
+    offsets[i] = offset; //set the offset
+    fentries[i].offset = fnoffs; //set the filename offset
+    fentries[i].sizeof_file = intfile.filesize; //set the size of the file
+    size_t fnlen = intfile.filename.length() + 1; //set length of filename + 1 null terminator
+    const char *cstr = intfile.filename.c_str(); //get cstring of filename
+    memcpy(characters+fnoffs, cstr, fnlen); //copy the cstring to characters + file 
     
-    offset += ALIGN(intfile.filesize, 0x10);
-    fnoffs += fnlen;
+    offset += ALIGN(intfile.filesize, 0x10); //add to the offset using align
+    fnoffs += fnlen; //add to the filename offsets with fnlen
   }
-  offsets[intfiles.size()] = offset;
+  offsets[intfiles.size()] = offset; //set the new offset
 
-  lzss_sec->uncompressed_size = offset;
-  lzss_sec->compressed_size = lzss_size;
-  memcpy(lzss_sec->data, lzss, lzss_size);
+  lzss_sec->uncompressed_size = offset; //uncompressed size is offset
+  lzss_sec->compressed_size = lzss_size; //compressed size is the lzss size
+  memcpy(lzss_sec->data, lzss, lzss_size); //copy lzss data to header data
 
   return;
 }
@@ -343,97 +343,98 @@ static int cmd_extract(int argc, char *args[]) {
 }
 
 static int cmd_create(int argc, char *args[]) {
-  REQUIRE(2,2);
-  char lbuf[256];
-  FILE *outfile;
-  const char *intname = args[0];
-  const char *dirname = args[1];
-  std::vector<intfile_t> intfiles;
-  outfile = fopen(intname, "wb");
-  if(NULL == outfile) {
-    ERROR("CREATE: Could not open target %s\n", intname);
+  REQUIRE(2,2); //make sure we in create
+  char lbuf[256]; //buffer
+  FILE *outfile; //file to output to
+  const char *intname = args[0]; //name of int
+  const char *dirname = args[1]; //name of directory
+  std::vector<intfile_t> intfiles; //vector of int files
+  outfile = fopen(intname, "wb"); //open in write-byte format
+  if(NULL == outfile) { //no ability ??
+    ERROR("CREATE: Could not open target %s\n", intname); //gotta go ., .,., .
     return 1;
   }
-  if(false == direxists(dirname)) {
+  if(!direxists(dirname)) { //if the dir doesnt exist
     ERROR("CREATE: Could not find directory %s\n", dirname);
     return 1;
   }
 
   byte *history = (byte*)(malloc(4096*2)); //For lzss compression
-  for(int i = 1; i < INT_RESOURCE_TYPE_COUNT; i += 1) {
-    const char *restypename = ptr2int::typenames[i];
-    snprintf(lbuf, sizeof(lbuf), "%s/%s", dirname, restypename);
+  for(int i = 1; i < INT_RESOURCE_TYPE_COUNT; i += 1) { //resource type count is 8
+    const char *restypename = ptr2int::typenames[i]; //what name do we use? pick from the array
+    snprintf(lbuf, sizeof(lbuf), "%s/%s", dirname, restypename); //make lbuf equal dir/type
     printf("Checking for %s... ", restypename);
-    if(false == direxists(lbuf)) {
+    if(!direxists(lbuf)) { //if it dont exist, move on
       printf("no\n"); continue;
-    } else {
+    } else { //good news it exists
       printf("yes\n");
-      intfiles.clear();
+      intfiles.clear(); //clear vectorr
 
-      resfile_iterator_t *iter = openiterator(lbuf);
+      resfile_iterator_t *iter = openiterator(lbuf); //try to open
       int folderlen = 0;
-      if(iter == NULL) {
+      if(iter == NULL) { //damn, we cant
         fprintf(stderr, "But I couldn't open it :(\n");
         continue;
       }
 
-      byte *folderdata = (byte*)(malloc(4));
-      const char *filename;
+      byte *folderdata = (byte*)(malloc(4)); //allow 4 bytes gfor folder data
+      const char *filename; //char pointer for file name
       while((filename = iter->next()) != NULL) {
-        snprintf(lbuf, sizeof(lbuf), "%s/%s/%s", dirname, restypename, filename);
-        printf("CHECK: %s\n", lbuf);
-        if(false == isfile(lbuf)) {
+        snprintf(lbuf, sizeof(lbuf), "%s/%s/%s", dirname, restypename, filename); //set lbuf to dirname/resource type/filename
+        printf("CHECK: %s\n", lbuf); //does it exist?
+        if(!isfile(lbuf)) { //nope, move on
           continue;
         }
         printf("ADD: %s\n", filename);
-        FILE *f = fopen(lbuf, "rb");
-        if(NULL == f) {
+        FILE *f = fopen(lbuf, "rb"); //open with read
+        if(NULL == f) { //oops, its not there
           fprintf(stderr, "   Could not open %s\n", lbuf);
-          continue;
+          continue; //move on
         }
-        int len = getfilesize(f);
-        int fdp = folderlen;
-        folderlen = ALIGN(folderlen + len, 0x10);
-        folderdata = (byte*)(realloc(folderdata, folderlen));
-        fread(folderdata + fdp, 1, len, f);
-        pad_folderdata(folderdata, fdp+len, folderlen);
-        fclose(f);
-        intfiles.push_back(intfile_t(std::string(filename), len, fdp));
+        int len = getfilesize(f); //get length of file
+        int fdp = folderlen; //hold folderlen for now
+        folderlen = ALIGN(folderlen + len, 0x10); //align folderlen and len with 0x10
+        folderdata = (byte*)(realloc(folderdata, folderlen)); //extend folder data
+        fread(folderdata + fdp, 1, len, f); //export file into folderdata+fdp bytes
+        pad_folderdata(folderdata, fdp+len, folderlen); //0fill folderdata
+        fclose(f); //close the file
+        intfiles.push_back(intfile_t(std::string(filename), len, fdp)); //add the new intfile to vector
+		//iterate for next resource
       }
-      delete iter;
+      delete iter; //get rid of iterator, we dont want any memory leaks
 
       printf("COMPRESS: Input %d bytes\n", folderlen);
-      memset(history,0,4096*2);
-      int complen = lzss_compress(12,4,2,2,history,folderdata,folderlen,NULL);
+      memset(history,0,4096*2); //fill history with 0s
+      int complen = lzss_compress(12,4,2,2,history,folderdata,folderlen,NULL); //compress the folderddata, get the length
 
-      printf("COMPRESS: Output %d bytes\n", complen);
-      memset(history,0,4096*2);
-      byte *lzss_data = (byte*)(malloc(complen));
-      lzss_compress(12,4,2,2,history,folderdata,folderlen,lzss_data);
-      free(folderdata);
+      printf("COMPRESS: Output %d bytes\n", complen); //output compressed bytes
+      memset(history,0,4096*2); //fill history with 0 again
+      byte *lzss_data = (byte*)(malloc(complen)); //allocate complen to bytes
+      lzss_compress(12,4,2,2,history,folderdata,folderlen,lzss_data); //compress again, but now output lzzs data
+      free(folderdata); //free the data
 
       printf("Building %s section\n", restypename);
-      int seclen = calc_int_section_size(intfiles, complen);
+      int seclen = calc_int_section_size(intfiles, complen); //calculate the size for the int ssection
 
       printf("  %d bytes\n", seclen);
-      byte *secdata = (byte*)(malloc(seclen));
-      build_int_section(i, intfiles, lzss_data, complen, secdata);
+      byte *secdata = (byte*)(malloc(seclen)); //allocate that amount
+      build_int_section(i, intfiles, lzss_data, complen, secdata); //build it
 
       printf("Writing %d bytes\n", seclen);
-      fwrite(secdata, 1, seclen, outfile);
+      fwrite(secdata, 1, seclen, outfile); //write the sectiondata to the file
 
-      free(secdata);
+      free(secdata); //free the sectiondata
     }
   }
 
 
   printf("Finalizing\n");
-  fwrite(&ptr2int::nullhdr, sizeof(ptr2int::nullhdr), 1, outfile);
+  fwrite(&ptr2int::nullhdr, sizeof(ptr2int::nullhdr), 1, outfile); //write nullhdr to file?
 
-  fclose(outfile);
+  fclose(outfile); //close the file
   printf("Done.\n");
-  free(history);
-  return 0;
+  free(history); //free history
+  return 0; //and we're done
 }
 
 static int cmd_optimize(int argc, char *args[]) {
@@ -467,12 +468,12 @@ static int cmd_optimize(int argc, char *args[]) {
   byte *orig_folderdata = (byte*)(malloc(4)); //byte pointer for 4 bytes
   int orig_folderlen = 0;
   while((filename = iter.next()) != NULL) {
-    snprintf(lbuf, sizeof(lbuf), "%s/%s", foldername, filename); //print buffer, byte size of buffer (usually 256 i think),
+    snprintf(lbuf, sizeof(lbuf), "%s/%s", foldername, filename); //set buffer to foldername/filename,
     FILE *f = fopen(lbuf, "rb");
     if(NULL == f) { //if file doesnt exist, we're fucked
       fprintf(stderr, "Couldn't find file %s\n", lbuf);
       continue;
-    }
+    }	
     printf("LOAD: %s\n", filename);
     int len = getfilesize(f); //len is the filesize (quite obviously)
     int fdp = orig_folderlen; //folder length is whats read i believe, which currently is 0
@@ -480,34 +481,37 @@ static int cmd_optimize(int argc, char *args[]) {
 	/*if len is lets say 3000, 0xBB8, align would result to
 	0xBC7 AND (NOT 0xF)
 	0xBC0
+	so take that and add to what origfolderlen already is
 	*/
-    orig_folderdata = (byte*)(realloc(orig_folderdata, orig_folderlen));
-    fread(orig_folderdata + fdp, 1, len, f);
-    pad_folderdata(orig_folderdata, fdp + len, orig_folderlen);
+    orig_folderdata = (byte*)(realloc(orig_folderdata, orig_folderlen)); //reallocate folderdata to now fit folderlength so we dont overflow
+    fread(orig_folderdata + fdp, 1, len, f); //read amount of data and put into folderdata + folderlength
+    pad_folderdata(orig_folderdata, fdp + len, orig_folderlen); //zero-fill the data
     fclose(f);
-    indices.push_back(i);
-    intfiles.push_back(intfile_t(std::string(filename), len, fdp));
-    i++;
+    indices.push_back(i); //add i to indicies
+    intfiles.push_back(intfile_t(std::string(filename), len, fdp)); //add an intfile to the vector
+    i++; //incrementrt i by 1 and the cycle repeats to the next iteration
   }
-  iter.close();
+  iter.close(); //close the iteration
       
-  printf("%d files using %d bytes\n", u32(intfiles.size()), orig_folderlen);
+  printf("%d files using %d bytes\n", u32(intfiles.size()), orig_folderlen); //# of int files using folder length
   printf("Compressing...\n");
-  memset(history, 0, 4096*2);
-  int orig_complen = lzss_compress(12,4,2,2,history,orig_folderdata,orig_folderlen,NULL);
-  int ccomplen = orig_complen;
+  memset(history, 0, 4096*2); //fill memory with 0s?
+  int orig_complen = lzss_compress(12,4,2,2,history,orig_folderdata,orig_folderlen,NULL); //get the compression length
+  int ccomplen = orig_complen; //set ccomplen to the compressed length
   printf("Original compressed size is %d bytes\n", orig_complen);
 
   int attempts = 1;
 
   for(;;) { //inf loop
-    byte *folderdata = (byte*)(malloc(4));
+    byte *folderdata = (byte*)(malloc(4)); //allow  4 bytes for folder data
     int folderlen = 0;
     int fdp = 0;
-    int len;
+    int len; //reset these vars, make a new one
     printf("\nAttempt %d...\n", attempts);
     srand(time(NULL));
     std::random_shuffle(indices.begin(), indices.end());
+	//randomly choose and shuffle
+	//no wonder optimize is shit
     for(i = 0; i < indices.size(); i += 1) {
       intfile_t &intfile = intfiles[indices[i]];
       len = intfile.filesize;
